@@ -1,3 +1,8 @@
+/**
+ * clase Juego que contiene toda la intefaz
+ */
+
+
 package org.example.juegodados;
 
 import javafx.application.Application;
@@ -15,14 +20,23 @@ import java.io.IOException;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class Juego extends Application {
+    /**
+     * Atributos de la clase, para poder usarlos luego al tirar dados
+     */
     Text numProta;
     Text numEnemigo;
     Text vidaProta;
     Text vidaEnemigo;
     Text perdedor;
-    Personaje prota=new Personaje("Beñat",7);
+    Principal prota=new Principal("Beñat",7);
     Enemigo enemigo=new Enemigo("Hanfrig",7);
     Button botonRoll;
+
+    /**
+     * Metodo para dibujar la ventana y sus componentes
+     * @param stage escenario de la actividad
+     * @throws IOException
+     */
     @Override
     public void start(Stage stage) throws IOException {
         Text protaTxt=new Text(prota.getNombre());
@@ -51,6 +65,11 @@ public class Juego extends Application {
         stage.show();
     }
 
+    /**
+     * Procedimiento tirarDados, gestiona el lanzamiento de los dados de los jugadores
+     * el que saque mayor integer resta un punto al contrario
+     * @return void
+     */
     private EventHandler<ActionEvent> tirarDados() {
 
             int numProtaD= (int) (Math.random()*6)+1;
@@ -76,6 +95,10 @@ public class Juego extends Application {
         return null;
     }
 
+    /**
+     * Metodo main
+     * @param args
+     */
     public static void main(String[] args) {
         launch();
     }
